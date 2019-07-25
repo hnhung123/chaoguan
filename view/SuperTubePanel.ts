@@ -17,6 +17,7 @@ class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
        this.view.closeButton.onClick(this, this.closeGameEndView);
     }
     public closeGameEndView():void{
-        JTPopUpManager.remove(this)
+        this.plus.remove();
+        JTPopUpManager.remove(this);
     }
 }

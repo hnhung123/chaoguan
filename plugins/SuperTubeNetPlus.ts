@@ -52,7 +52,7 @@ class SuperTubeNetPlus implements IPlugin, ISpriteCommand {
     };
     private onGetBlackList(note:NetPackage):void{   
         let cmd=gmcommon.GetBlackListResp.decode(note.body);
-        console.log("GM异常名单列表回报",cmd);
+        console.log("GM异常名单列表回包",cmd);
     };
     private setWinAreas(note:NetPackage):void{
         let cmd=gmgame.WinAreasResp.decode(note.body);
