@@ -1,10 +1,12 @@
 class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
+    private plus: SuperTubeNetPlus;
     constructor(){
         super();
         this.loadAsset("supertube");
     }
     protected nodityComplete():void{
         this.build(supertube.SuperTubeView,supertube.supertubeBinder,this);
+        this.plus = new SuperTubeNetPlus();
         super.nodityComplete();
         this.initUI();
     }
