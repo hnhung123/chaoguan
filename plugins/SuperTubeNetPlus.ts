@@ -45,10 +45,12 @@ class SuperTubeNetPlus implements IPlugin, ISpriteCommand {
     private onPlayerBetInfo(note:NetPackage):void{
         let cmd=gmgame.PlayersBetInfo.decode(note.body);
         console.log("GM玩家下注信息回包",cmd);
+        
     };
     private onAreaBetInfo(note:NetPackage):void{
         let cmd=gmgame.AreasBetInfo.decode(note.body);
         console.log("GM区域下注信息回包",cmd);
+        SuperTubeDataManager.getInstance.betAreaDataMgr(cmd);
     };
     private onGetBlackList(note:NetPackage):void{   
         let cmd=gmcommon.GetBlackListResp.decode(note.body);
