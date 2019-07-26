@@ -32,12 +32,15 @@ class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
         for(var i=0;i<=aemoneys.length;i++){
             if(i<=_arealist.numItems-1){
                 let areaitem=_arealist.getChildAt(i).asLabel;
-                areaitem.title=RandomUtil.formatGold(aemoneys[i]-1)
+                areaitem.title=RandomUtil.formatGold(aemoneys[i],1)
             }
         }
         (this.view.betAreacmpt["win_label"] as fairygui.GLabel).title="0";
 
-    }
+    };
+    private updateCutAreaWin(){
+
+    };
     public closeGameEndView():void{
         this.plus.remove();
         JTPopUpManager.remove(this);
