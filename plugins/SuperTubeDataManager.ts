@@ -15,5 +15,8 @@ class SuperTubeDataManager{
         this.cutAreaMoney_s=[];
         this.cutAreaMoney_s=data.gold as number[];
         this.stpPanel.showBetAreaData(this.cutAreaMoney_s,data.area)
+    };
+    public betPlayerDataMgr(data:gmgame.PlayersBetInfo){
+        
     }
 }

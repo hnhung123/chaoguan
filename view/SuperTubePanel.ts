@@ -3,6 +3,7 @@ class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
     public static cutEnterGame:number=0
     private areaBetData:number[]=[];
     private _ares:number[]=[];
+    private cutOperating: number[] = [];//当前选中区域
     constructor(){
         super();
         this.loadAsset("supertube");
@@ -23,6 +24,7 @@ class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
        this.view.c1.selectedIndex = SuperTubePanel.cutEnterGame;
        this.view.betAreacmpt.c1.selectedIndex = SuperTubePanel.cutEnterGame;
        this.view.playerlistcmpt.c1.selectedIndex = SuperTubePanel.cutEnterGame;
+       SuperTubeDataManager.getInstance
     };
     public showBetAreaData(aemoneys:number[],areas:number[]=[]):void{
         this.areaBetData=aemoneys;
@@ -36,11 +38,9 @@ class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
             }
         }
         (this.view.betAreacmpt["win_label"] as fairygui.GLabel).title="0";
-
+        
     };
-    private updateCutAreaWin(){
 
-    };
     public closeGameEndView():void{
         this.plus.remove();
         JTPopUpManager.remove(this);
