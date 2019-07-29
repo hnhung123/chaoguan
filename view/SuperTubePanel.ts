@@ -3,6 +3,8 @@ class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
     public static cutEnterGame:number=0
     private areaBetData:number[]=[];
     private _ares:number[]=[];
+    private playerBetData:gmgame.IPlayerBetInfo[];
+    public totalPlayer:number=0;
     private cutOperating: number[] = [];//当前选中区域
     constructor(){
         super();
@@ -40,7 +42,26 @@ class SuperTubePanel extends JTPanel<supertube.SuperTubeView>{
         (this.view.betAreacmpt["win_label"] as fairygui.GLabel).title="0";
         
     };
+    public showPlayerBetList(betlist:gmgame.IPlayerBetInfo[]):void{
+        this.playerBetData=betlist;
+        let _playerlist = this.view.playerlistcmpt["playerlist_" + SuperTubePanel.cutEnterGame] as fairygui.GList;
+        _playerlist.removeChildrenToPool();
+        for (var i = 0; i < betlist.length; i++) {//循环每个玩家
+            let plitem = _playerlist.addItemFromPool();
+            plitem.data = betlist[i].up_order;
+            let _pilist = plitem["playeritemList"] as fairygui.GList;
+            for (var j = 0; j < _pilist.numItems; j++) {//循环item的每个字段
+                if (j == 0) {//玩家ID
+                    _pilist.getChildAt(j).asLabel.title = betlist[i].player_id.toString();
+                } else {//玩家下注区
+                    // let _area = betlist[i].area[j - 1];
+                    _pilist.getChildAt(j).asLabel.title = RandomUtil.formatGold(betlist[i].gold[j - 1] as number, 1);
 
+                }
+            }
+            (plitem["playerwinLabel"] as fairygui.GLabel).text = "0";//玩家的输赢
+        }
+    };
     public closeGameEndView():void{
         this.plus.remove();
         JTPopUpManager.remove(this);

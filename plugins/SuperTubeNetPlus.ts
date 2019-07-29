@@ -27,7 +27,7 @@ class SuperTubeNetPlus implements IPlugin, ISpriteCommand {
     executeCommand(note: NetPackage) {
         switch (note.head.protoid) {
             case SuperTubeActionID.PLAYERS_BET_INFO:
-                this.onPlayerBetInfo(note);
+                this.onPlayersBetInfo(note);
                 break;
             case SuperTubeActionID.AREAS_BET_INFO:
                 this.onAreaBetInfo(note);
@@ -42,7 +42,7 @@ class SuperTubeNetPlus implements IPlugin, ISpriteCommand {
                 console.log("未处理协议weichulixieyi",note)
         }
     };
-    private onPlayerBetInfo(note:NetPackage):void{
+    private onPlayersBetInfo(note:NetPackage):void{
         let cmd=gmgame.PlayersBetInfo.decode(note.body);
         console.log("GM玩家下注信息回包",cmd);
         SuperTubeDataManager.getInstance.betPlayerDataMgr(cmd);
